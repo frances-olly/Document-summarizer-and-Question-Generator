@@ -15,6 +15,16 @@ st.set_page_config(page_title="AI Study Assistant", page_icon="📚", layout="wi
 st.title("📚 Intelligent Document Summarizer & Quiz Generator")
 st.write("Upload your lecture notes, seminar papers, or project files (.docx, .pdf, .txt) to generate summaries and practice quizzes.")
 
+# Structured Output Schema for Quiz
+class Question(BaseModel):
+    question: str = Field(description="The question text")
+    options: List[str] = Field(description="List of 4 options")
+    correct_answer: str = Field(description="The correct option")
+    explanation: str = Field(description="Brief explanation of why the correct answer is right")
+
+class Quiz(BaseModel):
+    questions: List[Question]
+    
 # File Uploader Widget
 uploaded_file = st.sidebar.file_uploader("Upload a Document", type=["docx", "pdf", "txt"])
 
@@ -77,7 +87,6 @@ if uploaded_file is not None:
                         st.write(f"**Q{idx}:** Correct! ({q.correct_answer})")
                     else:
                         st.write(f"**Q{idx}:** Incorrect. Correct answer: **{q.correct_answer}**")
-                    st.info(f"**Explanation:** {q.explanation}")
 
 else:
     st.info("Please upload a `.docx`, `.pdf`, or `.txt` file using the sidebar to begin.")
