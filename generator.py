@@ -38,7 +38,7 @@ def generate_summary(chunks: List[str]) -> str:
             raise e
 
 def generate_practice_questions(summary_text: str) -> Quiz:
-    prompt = f"Generate 5 multiple-choice practice questions based on this summary:\n\n{summary_text}"
+    prompt = f"Generate {num_question} multiple-choice practice questions based on this summary:\n\n{summary_text}"
     
     # Retry loop for 503 server errors
     for attempt in range(3):
