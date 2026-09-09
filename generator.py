@@ -27,7 +27,7 @@ def generate_summary(chunks: List[str]) -> str:
     for attempt in range(3):
         try:
             res = client.models.generate_content(
-                model="gemini-2.5-flash",
+                model="gemini-3.6-flash",
                 contents=prompt
             )
             return res.text
@@ -44,7 +44,7 @@ def generate_practice_questions(summary_text: str) -> Quiz:
     for attempt in range(3):
         try:
             res = client.models.generate_content(
-                model="gemini-2.5-flash",
+                model="gemini-3.6-flash",
                 contents=prompt,
                 config={
                     "response_mime_type": "application/json",
