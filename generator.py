@@ -1,6 +1,8 @@
 import os
 import streamlit as st
 from google import genai
+from pydantic import BaseModel, Field
+from typing import List
 
 # Fetch API key securely from Streamlit secrets or environment variables
 api_key = st.secrets.get("GEMINI_API_KEY") or os.environ.get("GEMINI_API_KEY")
