@@ -6,6 +6,8 @@ from google import genai
 from google.genai import types
 from pydantic import BaseModel, Field
 from typing import List
+from parser import parse_document, create_chunks
+from generator import generate_summary, generate_practice_questions
 
 # Page Configuration
 st.set_page_config(page_title="AI Study Assistant", page_icon="📚", layout="wide")
