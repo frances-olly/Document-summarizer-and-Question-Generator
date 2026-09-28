@@ -56,7 +56,7 @@ if uploaded_file is not None:
 
     with tab2:
         st.header("Practice Quiz")
-        num_q = st.slider("Select number of questions:", min_value=3, max_value=100, value=5)
+        num_q = st.slider("Select number of questions:", min_value=3, max_value=10, value=5)
         
         # 1. Generate and store the quiz in session state
         if st.button("Generate Questions"):
