@@ -48,11 +48,18 @@ if uploaded_file is not None:
     tab1, tab2 = st.tabs(["📝 Summary", "❓ Practice Quiz"])
 
     with tab1:
-        st.header("Document Summary")
-        if st.button("Generate Summary"):
-            with st.spinner("Analyzing full document and generating comprehensive summary..."):
-                summary = generate_summary(chunks)  # Pass all chunks
-                st.write(summary)  
+    st.header("Document Summary")
+
+    if st.button("Generate Summary"):
+        with st.spinner("Analyzing document and generating summary..."):
+            summary = generate_summary(chunks)
+
+            # Save the summary so it can be used later
+            st.session_state.summary = summary
+
+    # Display the saved summary
+    if "summary" in st.session_state:
+        st.write(st.session_state.summary)
 
     with tab2:
         st.header("Practice Quiz")
