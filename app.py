@@ -1,6 +1,5 @@
 import streamlit as st
-from utils import extract_text_from_file, chunk_text
-from generator import generate_summary, generate_practice_questions
+from generator import extract_text_from_file, chunk_text, generate_summary, generate_practice_questions
 
 st.set_page_config(page_title="Document Summarizer & Quiz Generator", layout="wide")
 
