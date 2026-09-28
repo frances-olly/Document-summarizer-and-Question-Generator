@@ -60,8 +60,14 @@ if uploaded_file is not None:
         
         # 1. Generate and store the quiz in session state
         if st.button("Generate Questions"):
-            with st.spinner("Generating revision questions..."):
-                st.session_state.quiz = generate_practice_questions(chunks, num_questions=num_q)
+    if "summary" not in st.session_state:
+        st.warning("Please generate the document summary first.")
+    else:
+        with st.spinner("Generating revision questions..."):
+            st.session_state.quiz = generate_practice_questions(
+                st.session_state.summary,
+                num_questions=num_q
+            )
 
         # 2. Render the form if a quiz exists in session state
         if "quiz" in st.session_state:
